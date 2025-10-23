@@ -1,60 +1,8 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1761215172158,
+  "lastUpdate": 1761257609353,
   "repoUrl": "https://github.com/czlonkowski/n8n-mcp",
   "entries": {
     "n8n-mcp Benchmarks": [
-      {
-        "commit": {
-          "author": {
-            "email": "56956555+czlonkowski@users.noreply.github.com",
-            "name": "Romuald Członkowski",
-            "username": "czlonkowski"
-          },
-          "committer": {
-            "email": "noreply@github.com",
-            "name": "GitHub",
-            "username": "web-flow"
-          },
-          "distinct": true,
-          "id": "7fcfa8f696c0c5d0c99a41676d9d17ec8ea7e495",
-          "message": "Merge pull request #257 from czlonkowski/feat/integration-tests-phase-3\n\nfeat(tests): Phase 3 Integration Tests - Workflow Retrieval",
-          "timestamp": "2025-10-04T13:16:29+02:00",
-          "tree_id": "a3e23ef0f3d681da57749ad82ea89b398418183e",
-          "url": "https://github.com/czlonkowski/n8n-mcp/commit/7fcfa8f696c0c5d0c99a41676d9d17ec8ea7e495"
-        },
-        "date": 1759576716338,
-        "tool": "customSmallerIsBetter",
-        "benches": [
-          {
-            "name": "sample - array sorting - small",
-            "value": 0.0192,
-            "range": "0.2838",
-            "unit": "ms",
-            "extra": "52131 ops/sec"
-          },
-          {
-            "name": "sample - array sorting - large",
-            "value": 3.4023,
-            "range": "0.5754999999999999",
-            "unit": "ms",
-            "extra": "294 ops/sec"
-          },
-          {
-            "name": "sample - string concatenation",
-            "value": 0.0047,
-            "range": "0.2705",
-            "unit": "ms",
-            "extra": "213744 ops/sec"
-          },
-          {
-            "name": "sample - object creation",
-            "value": 0.066,
-            "range": "0.35419999999999996",
-            "unit": "ms",
-            "extra": "15141 ops/sec"
-          }
-        ]
-      },
       {
         "commit": {
           "author": {
@@ -1920,6 +1868,37 @@ window.BENCHMARK_DATA = {
           "url": "https://github.com/czlonkowski/n8n-mcp/commit/551fea841b494bb067f28d9c6dd99fbaf2292567"
         },
         "date": 1761215171443,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "sample - array sorting - small",
+            "value": 0.0136,
+            "range": "0.3096",
+            "unit": "ms",
+            "extra": "73341 ops/sec"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "56956555+czlonkowski@users.noreply.github.com",
+            "name": "Romuald Członkowski",
+            "username": "czlonkowski"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "5702a64a013871332618379aae08280ded4b9ec3",
+          "message": "fix: AI node connection validation in partial workflow updates (#357) (#358)\n\n* fix: AI node connection validation in partial workflow updates (#357)\n\nFix critical validation issue where n8n_update_partial_workflow incorrectly\nrequired 'main' connections for AI nodes that exclusively use AI-specific\nconnection types (ai_languageModel, ai_memory, ai_embedding, ai_vectorStore, ai_tool).\n\nProblem:\n- Workflows containing AI nodes could not be updated via n8n_update_partial_workflow\n- Validation incorrectly expected ALL nodes to have 'main' connections\n- AI nodes only have AI-specific connection types, never 'main'\n\nRoot Cause:\n- Zod schema in src/services/n8n-validation.ts defined 'main' as required field\n- Schema didn't support AI-specific connection types\n\nFixed:\n- Made 'main' connection optional in Zod schema\n- Added support for all AI connection types: ai_tool, ai_languageModel, ai_memory,\n  ai_embedding, ai_vectorStore\n- Created comprehensive test suite (13 tests) covering all AI connection scenarios\n- Updated documentation to clarify AI nodes don't require 'main' connections\n\nTesting:\n- All 13 new integration tests passing\n- Tested with actual workflow 019Vrw56aROeEzVj from issue #357\n- Zero breaking changes (making required fields optional is always safe)\n\nFiles Changed:\n- src/services/n8n-validation.ts - Fixed Zod schema\n- tests/integration/workflow-diff/ai-node-connection-validation.test.ts - New test suite\n- src/mcp/tool-docs/workflow_management/n8n-update-partial-workflow.ts - Updated docs\n- package.json - Version bump to 2.21.1\n- CHANGELOG.md - Comprehensive release notes\n\nCloses #357\n\n🤖 Generated with Claude Code (https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\n\nConceived by Romuald Członkowski - www.aiadvisors.pl/en\n\n* fix: Add missing id parameter in test file and JSDoc comment\n\nAddress code review feedback from PR #358:\n- Add 'id' field to all applyDiff calls in test file (fixes TypeScript errors)\n- Add JSDoc comment explaining why 'main' is optional in schema\n- Ensures TypeScript compilation succeeds\n\nChanges:\n- tests/integration/workflow-diff/ai-node-connection-validation.test.ts:\n  Added id parameter to all 13 test cases\n- src/services/n8n-validation.ts:\n  Added JSDoc explaining optional main connections\n\nTesting:\n- npm run typecheck: PASS ✅\n- npm run build: PASS ✅\n- All 13 tests: PASS ✅\n\n🤖 Generated with Claude Code (https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\n\n---------\n\nCo-authored-by: Claude <noreply@anthropic.com>",
+          "timestamp": "2025-10-24T00:11:35+02:00",
+          "tree_id": "19be7f8d1f13956150bd8d85b2a3e7f08ed5247d",
+          "url": "https://github.com/czlonkowski/n8n-mcp/commit/5702a64a013871332618379aae08280ded4b9ec3"
+        },
+        "date": 1761257608680,
         "tool": "customSmallerIsBetter",
         "benches": [
           {
