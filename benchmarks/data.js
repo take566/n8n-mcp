@@ -1,60 +1,8 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1761148815916,
+  "lastUpdate": 1761205479621,
   "repoUrl": "https://github.com/czlonkowski/n8n-mcp",
   "entries": {
     "n8n-mcp Benchmarks": [
-      {
-        "commit": {
-          "author": {
-            "email": "56956555+czlonkowski@users.noreply.github.com",
-            "name": "Romuald Członkowski",
-            "username": "czlonkowski"
-          },
-          "committer": {
-            "email": "noreply@github.com",
-            "name": "GitHub",
-            "username": "web-flow"
-          },
-          "distinct": true,
-          "id": "88e288f8f622ce7f6c7b5fede070808f6fb7d480",
-          "message": "Merge pull request #256 from czlonkowski/feat/integration-tests-phase-2\n\nfeat(tests): implement Phase 2 integration testing - workflow creation tests",
-          "timestamp": "2025-10-04T10:45:54+02:00",
-          "tree_id": "954bf1e2cc08e2cd2e3eedde002c308350991863",
-          "url": "https://github.com/czlonkowski/n8n-mcp/commit/88e288f8f622ce7f6c7b5fede070808f6fb7d480"
-        },
-        "date": 1759567663624,
-        "tool": "customSmallerIsBetter",
-        "benches": [
-          {
-            "name": "sample - array sorting - small",
-            "value": 0.0192,
-            "range": "0.24150000000000002",
-            "unit": "ms",
-            "extra": "52075 ops/sec"
-          },
-          {
-            "name": "sample - array sorting - large",
-            "value": 3.18,
-            "range": "0.5068000000000001",
-            "unit": "ms",
-            "extra": "314 ops/sec"
-          },
-          {
-            "name": "sample - string concatenation",
-            "value": 0.005,
-            "range": "0.2547",
-            "unit": "ms",
-            "extra": "201379 ops/sec"
-          },
-          {
-            "name": "sample - object creation",
-            "value": 0.0655,
-            "range": "0.2891",
-            "unit": "ms",
-            "extra": "15275 ops/sec"
-          }
-        ]
-      },
       {
         "commit": {
           "author": {
@@ -1962,6 +1910,37 @@ window.BENCHMARK_DATA = {
           "url": "https://github.com/czlonkowski/n8n-mcp/commit/c76ffd9fb182a75a64642d73118b112adfa12b96"
         },
         "date": 1761148815471,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "sample - array sorting - small",
+            "value": 0.0136,
+            "range": "0.3096",
+            "unit": "ms",
+            "extra": "73341 ops/sec"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "56956555+czlonkowski@users.noreply.github.com",
+            "name": "Romuald Członkowski",
+            "username": "czlonkowski"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "eac4e6710146cfef58e982e4f601acf2c900ee3d",
+          "message": "fix: recognize all trigger node types including executeWorkflowTrigger (#351) (#352)\n\nThis fix addresses issue #351 where Execute Workflow Trigger and other\ntrigger nodes were incorrectly treated as regular nodes, causing\n\"disconnected node\" errors during partial workflow updates.\n\n## Changes\n\n**1. Created Shared Trigger Detection Utilities**\n- src/utils/node-type-utils.ts:\n  - isTriggerNode(): Recognizes ALL trigger types using flexible pattern matching\n  - isActivatableTrigger(): Returns false for executeWorkflowTrigger (not activatable)\n  - getTriggerTypeDescription(): Human-readable trigger descriptions\n\n**2. Updated Workflow Validation**\n- src/services/n8n-validation.ts:\n  - Replaced hardcoded webhookTypes Set with isTriggerNode() function\n  - Added validation preventing activation of workflows with only executeWorkflowTrigger\n  - Now recognizes 200+ trigger types across n8n packages\n\n**3. Updated Workflow Validator**\n- src/services/workflow-validator.ts:\n  - Replaced inline trigger detection with shared isTriggerNode() function\n  - Ensures consistency across all validation code paths\n\n**4. Comprehensive Tests**\n- tests/unit/utils/node-type-utils.test.ts:\n  - Added 30+ tests for trigger detection functions\n  - Validates all trigger types are recognized correctly\n  - Confirms executeWorkflowTrigger is trigger but not activatable\n\n## Impact\n\nBefore:\n- Execute Workflow Trigger flagged as disconnected node\n- Schedule/email/polling triggers also rejected\n- Users forced to keep unnecessary webhook triggers\n\nAfter:\n- ALL trigger types recognized (executeWorkflowTrigger, scheduleTrigger, etc.)\n- No disconnected node errors for triggers\n- Clear error when activating workflow with only executeWorkflowTrigger\n- Future-proof (new triggers automatically supported)\n\n## Testing\n\n- Build: ✅ Passes\n- Typecheck: ✅ Passes\n- Unit tests: ✅ All pass\n- Validation test: ✅ Trigger detection working correctly\n\nConceived by Romuald Członkowski - https://www.aiadvisors.pl/en",
+          "timestamp": "2025-10-23T09:42:46+02:00",
+          "tree_id": "664d0aaabcff6c6564f144a76f095894a58eaa88",
+          "url": "https://github.com/czlonkowski/n8n-mcp/commit/eac4e6710146cfef58e982e4f601acf2c900ee3d"
+        },
+        "date": 1761205478896,
         "tool": "customSmallerIsBetter",
         "benches": [
           {
