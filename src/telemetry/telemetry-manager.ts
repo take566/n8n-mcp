@@ -166,9 +166,10 @@ export class TelemetryManager {
         // Queue for batch processing
         this.eventTracker.enqueueMutation(mutationRecord);
 
-        // Auto-flush if queue is large
+        // Auto-flush if queue reaches threshold
+        // Lower threshold (2) for mutations since they're less frequent than regular events
         const queueSize = this.eventTracker.getMutationQueueSize();
-        if (queueSize >= 5) { // Flush after 5 mutations
+        if (queueSize >= 2) {
           await this.flushMutations();
         }
       }
