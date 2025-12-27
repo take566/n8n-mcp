@@ -33,7 +33,7 @@ print_status "Docker is running ✅"
 
 # Clean up any existing containers
 print_status "Cleaning up existing containers..."
-docker-compose -f docker-compose.extract.yml down -v 2>/dev/null || true
+docker-compose -f docker/compose.extract.yml down -v 2>/dev/null || true
 
 # Build the project first
 print_status "Building the project..."
@@ -41,7 +41,7 @@ npm run build
 
 # Start the extraction process
 print_status "Starting n8n container to extract latest nodes..."
-docker-compose -f docker-compose.extract.yml up -d n8n-latest
+docker-compose -f docker/compose.extract.yml up -d n8n-latest
 
 # Wait for n8n container to be healthy
 print_status "Waiting for n8n container to initialize..."
@@ -49,7 +49,7 @@ ATTEMPTS=0
 MAX_ATTEMPTS=60
 
 while [ $ATTEMPTS -lt $MAX_ATTEMPTS ]; do
-    if docker-compose -f docker-compose.extract.yml ps | grep -q "healthy"; then
+    if docker-compose -f docker/compose.extract.yml ps | grep -q "healthy"; then
         print_status "n8n container is ready ✅"
         break
     fi
@@ -61,14 +61,14 @@ done
 
 if [ $ATTEMPTS -eq $MAX_ATTEMPTS ]; then
     print_error "n8n container failed to become healthy"
-    docker-compose -f docker-compose.extract.yml logs n8n-latest
-    docker-compose -f docker-compose.extract.yml down -v
+    docker-compose -f docker/compose.extract.yml logs n8n-latest
+    docker-compose -f docker/compose.extract.yml down -v
     exit 1
 fi
 
 # Run the extraction
 print_status "Running node extraction..."
-docker-compose -f docker-compose.extract.yml run --rm node-extractor
+docker-compose -f docker/compose.extract.yml run --rm node-extractor
 
 # Check the results
 print_status "Checking extraction results..."
@@ -97,7 +97,7 @@ fi
 
 # Clean up
 print_status "Cleaning up Docker containers..."
-docker-compose -f docker-compose.extract.yml down -v
+docker-compose -f docker/compose.extract.yml down -v
 
 print_status "✨ Extraction complete!"
 

@@ -319,7 +319,7 @@ class ReleaseAutomationTester {
     section('Testing Docker Configuration');
     
     try {
-      const dockerfiles = ['Dockerfile', 'Dockerfile.railway'];
+      const dockerfiles = ['Dockerfile', 'docker/Dockerfile.railway'];
       
       for (const dockerfile of dockerfiles) {
         const dockerfilePath = path.join(this.rootDir, dockerfile);
@@ -348,7 +348,7 @@ class ReleaseAutomationTester {
       }
       
       // Check docker-compose files
-      const composeFiles = ['docker-compose.yml', 'docker-compose.n8n.yml'];
+      const composeFiles = ['docker-compose.yml', 'docker/compose.n8n.yml'];
       for (const composeFile of composeFiles) {
         const composePath = path.join(this.rootDir, composeFile);
         if (fs.existsSync(composePath)) {

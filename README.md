@@ -59,7 +59,7 @@ Prefer to run n8n-MCP yourself? Choose your deployment method:
 
 Get n8n-MCP running in minutes:
 
-[![n8n-mcp Video Quickstart Guide](./thumbnail.png)](https://youtu.be/5CccjiLLyaY?si=Z62SBGlw9G34IQnQ&t=343)
+[![n8n-mcp Video Quickstart Guide](./docs/img/thumbnail.png)](https://youtu.be/5CccjiLLyaY?si=Z62SBGlw9G34IQnQ&t=343)
 
 **Prerequisites:** [Node.js](https://nodejs.org/) installed on your system
 
@@ -262,7 +262,7 @@ If you're running n8n locally (e.g., `http://localhost:5678` or Docker), you nee
 
 ## 🔐 Privacy & Telemetry
 
-n8n-mcp collects anonymous usage statistics to improve the tool. [View our privacy policy](./PRIVACY.md).
+n8n-mcp collects anonymous usage statistics to improve the tool. [View our privacy policy](./docs/PRIVACY.md).
 
 ### Opting Out
 

@@ -25,7 +25,7 @@ This guide shows how to configure the n8n-nodes-mcp community node to connect to
 docker stop n8n n8n-mcp && docker rm n8n n8n-mcp
 
 # Start with HTTP Streamable configuration
-docker-compose -f docker-compose.n8n.yml up -d
+docker-compose -f docker/compose.n8n.yml up -d
 
 # Services will be available at:
 # - n8n: http://localhost:5678

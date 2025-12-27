@@ -721,4 +721,4 @@ console.log('Active sessions:', sessionInfo.sessions?.active);
 
 - **Issues**: [GitHub Issues](https://github.com/czlonkowski/n8n-mcp/issues)
 - **Discussions**: [GitHub Discussions](https://github.com/czlonkowski/n8n-mcp/discussions)
-- **Security**: For security issues, see [SECURITY.md](../SECURITY.md)
+- **Security**: For security issues, see [SECURITY.md](./SECURITY.md)

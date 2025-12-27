@@ -384,7 +384,7 @@ For Docker: Set N8N_MCP_TELEMETRY_DISABLED=true
 ║  Email romuald@n8n-mcp.com with your anonymous ID          ║
 ║                                                             ║
 ║  Learn more:                                               ║
-║  https://github.com/czlonkowski/n8n-mcp/blob/main/PRIVACY.md ║
+║  https://github.com/czlonkowski/n8n-mcp/blob/main/docs/PRIVACY.md ║
 ║                                                             ║
 ╚════════════════════════════════════════════════════════════╝
 `);

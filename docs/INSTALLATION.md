@@ -243,7 +243,7 @@ REBUILD_ON_START=false
 
 1. **Use docker-compose override:**
    ```bash
-   cp docker-compose.override.yml.example docker-compose.override.yml
+   cp docker/compose.override.example.yml docker-compose.override.yml
    ```
 
 2. **Edit override for development:**
