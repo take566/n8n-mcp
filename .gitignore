@@ -35,6 +35,8 @@ Thumbs.db
 # Logs
 logs/
 *.log
+fetch_log.txt
+test-output.txt
 
 # Testing
 coverage/
