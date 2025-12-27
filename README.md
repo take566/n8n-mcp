@@ -236,6 +236,7 @@ Every sponsorship directly translates to hours invested in making n8n-mcp better
 
 **Prerequisites:** [Node.js](https://nodejs.org/) installed on your system
 
+**Using npm:**
 ```bash
 # 1. Clone and setup
 git clone https://github.com/czlonkowski/n8n-mcp.git
@@ -246,6 +247,19 @@ npm run rebuild
 
 # 2. Test it works
 npm start
+```
+
+**Using pnpm:**
+```bash
+# 1. Clone and setup
+git clone https://github.com/czlonkowski/n8n-mcp.git
+cd n8n-mcp
+pnpm install
+pnpm run build
+pnpm run rebuild
+
+# 2. Test it works
+pnpm start
 ```
 
 Add to Claude Desktop config:

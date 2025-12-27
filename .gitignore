@@ -82,7 +82,7 @@ docker-compose.override.yml
 .grunt/
 .lock-wscript
 .node_repl_history
-.npmrc
+# .npmrc - Keep in repo for pnpm configuration
 .yarnrc
 
 # Temporary files
@@ -130,3 +130,11 @@ n8n-mcp-wrapper.sh
 
 # MCP configuration files
 .mcp.json
+.clinerules/byterover-rules.md
+.kilocode/rules/byterover-rules.md
+.roo/rules/byterover-rules.md
+.windsurf/rules/byterover-rules.md
+.cursor/rules/byterover-rules.mdc
+.kiro/steering/byterover-rules.md
+.qoder/rules/byterover-rules.md
+.augment/rules/byterover-rules.md
